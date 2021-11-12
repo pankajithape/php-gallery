@@ -20,6 +20,8 @@
 
       $user_found = User::find_user_by_id(1);
       echo $user_found['id'];
+
+
       // echo $user->username;
       ?>
       <ol class="breadcrumb">
