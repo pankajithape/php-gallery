@@ -18,10 +18,14 @@
       // $user_found = mysqli_fetch_array($result_set);
 
 
-      $found_user = User::find_user_by_id(1);
-      $user = User::instantiation($found_user);
-      echo $user->username;
+      // $found_user = User::find_user_by_id(1);
+      // $user = User::instantiation($found_user);
+      // echo $user->username;
 
+      $users = User::find_all_users();
+      foreach ($users as $user) {
+        echo $user->id . "<br>";
+      }
 
       ?>
       <ol class="breadcrumb">
