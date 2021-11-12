@@ -19,10 +19,12 @@
 
 
       $user_found = User::find_user_by_id(1);
-      echo $user_found['id'];
+      $user = new User();
+      $user->id = $user_found['id'];
+      $user->username = $user_found['username'];
 
 
-      // echo $user->username;
+      echo $user->username;
       ?>
       <ol class="breadcrumb">
         <li>
