@@ -8,16 +8,15 @@
         <small>Subheading</small>
       </h1>
       <?php
-      // if ($database->connection) {
-      //   echo 'true';
-      // }
 
-      // $sql = "SELECT * FROM users";
-      // $result = $database->query($sql);
-      // $user_found = mysqli_fetch_array($result);
-      // echo $user_found['username'];
-
+      echo "xxxxx";
       $user = new User();
+      $result_set = $user->find_all_users();
+      while ($row = mysqli_fetch_array($result_set)) {
+        echo $row['username'] . "<br>";
+      }
+      $user_found = mysqli_fetch_array($result_set);
+      // echo $user->username;
       ?>
       <ol class="breadcrumb">
         <li>
