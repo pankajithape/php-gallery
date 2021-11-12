@@ -11,11 +11,15 @@
       echo "here I am" . "<br><br><br>";
 
 
-      $result_set = User::find_all_users();
-      while ($row = mysqli_fetch_array($result_set)) {
-        echo $row['username'] . "<br>";
-      }
-      $user_found = mysqli_fetch_array($result_set);
+      // $result_set = User::find_all_users();
+      // while ($row = mysqli_fetch_array($result_set)) {
+      //   echo $row['username'] . "<br>";
+      // }
+      // $user_found = mysqli_fetch_array($result_set);
+
+
+      $user_found = User::find_user_by_id(1);
+      echo $user_found['id'];
       // echo $user->username;
       ?>
       <ol class="breadcrumb">
