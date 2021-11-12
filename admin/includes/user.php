@@ -24,4 +24,11 @@ class User
     $result_set = $database->query($sql);
     return $result_set;
   }
+  public static function instantiation($found_user)
+  {
+    $the_object = new self;
+    $the_object->id = $found_user['id'];
+    $the_object->username = $found_user['username'];
+    return $the_object;
+  }
 }
