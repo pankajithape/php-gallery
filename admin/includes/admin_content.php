@@ -10,13 +10,20 @@
       <?php
       echo "here I am" . "<br><br><br>";
 
-      $user = new User();
-      $user->username = "Example_username";
-      $user->password = "Example_password";
-      $user->first_name = "Example_first_name";
-      $user->last_name = "Example_last_name";
+      // $user = new User();
+      // $user->update();
 
-      $user->create();
+      $user = User::find_user_by_id(4);
+      $user->last_name = "Ithape";
+      $user->update();
+
+      // $user = new User();
+      // $user->username = "Example_username";
+      // $user->password = "Example_password";
+      // $user->first_name = "Example_first_name";
+      // $user->last_name = "Example_last_name";
+
+      // $user->create();
 
 
       // $result_set = User::find_all_users();
