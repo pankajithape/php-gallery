@@ -1,7 +1,7 @@
 <?php
 ob_start();
 
-$db['db_host'] = 'localhost';
+$db['db_host'] = 'localhost:4306';
 $db['db_user'] = 'root';
 $db['db_password'] = '';
 $db['db_name'] = 'gallery_db';
