@@ -10,6 +10,14 @@
       <?php
       echo "here I am" . "<br><br><br>";
 
+      $user = new User();
+      $user->username = "Example_username";
+      $user->password = "Example_password";
+      $user->first_name = "Example_first_name";
+      $user->last_name = "Example_last_name";
+
+      $user->create();
+
 
       // $result_set = User::find_all_users();
       // while ($row = mysqli_fetch_array($result_set)) {
@@ -27,8 +35,8 @@
       //   echo $user->id . "<br>";
       // } 
 
-      $found_user = User::find_user_by_id(1);
-      echo $found_user->username;
+      // $found_user = User::find_user_by_id(1);
+      // echo $found_user->username;
 
       // $photo = new photo();
 
