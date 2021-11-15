@@ -13,9 +13,21 @@
       // $user = new User();
       // $user->update();
 
-      $user = User::find_user_by_id(4);
-      $user->last_name = "Ithape";
-      $user->update();
+      // $user = User::find_user_by_id(4);
+      // $user->last_name = "Ithape";
+      // $user->update();
+
+
+      $user = User::find_user_by_id(6);
+      $user->username = 'Dave';
+      $user->save();
+
+
+      // $user = new User;
+      // $user->username = 'Ram';
+      // $user->save();
+
+      // $user->last_name = "Ithape";
 
       // $user = new User();
       // $user->username = "Example_username";
