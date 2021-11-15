@@ -1,4 +1,5 @@
 <?php include("includes/header.php");
+
 if ($session->is_signed_in()) {
   redirect('index.php');
 }
@@ -38,4 +39,6 @@ if (isset($_POST['submit'])) {
       <input type="submit" name="submit" value="Submit" class="btn btn-primary">
     </div>
   </form>
+
+
 </div>
