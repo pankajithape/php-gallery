@@ -13,13 +13,13 @@
       // $user = new User();
       // $user->update();
 
-      $user = User::find_user_by_id(6);
+      // $user = User::find_user_by_id(6);
       // $user->last_name = "Ithape";
       // $user->username = "Example_username1";
       // $user->password = "_password";
-      $user->first_name = "_first     '_name";
-      $user->last_name = "_last_name's ddd";
-      $user->update();
+      // $user->first_name = "_first     '_name";
+      // $user->last_name = "_last_name's ddd";
+      // $user->update();
 
 
       // $user = User::find_user_by_id(6);
@@ -53,10 +53,10 @@
       // $user = User::instantiation($found_user);
       // echo $user->username;
 
-      // $users = User::find_all_users();
-      // foreach ($users as $user) {
-      //   echo $user->id . "<br>";
-      // } 
+      $users = User::find_all();
+      foreach ($users as $user) {
+        echo $user->username . "<br>";
+      }
 
       // $found_user = User::find_user_by_id(1);
       // echo $found_user->username;
