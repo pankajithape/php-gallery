@@ -27,9 +27,9 @@
       // $user->save();
 
 
-      // $user = new User;
-      // $user->username = 'Ram';
-      // $user->save();
+      $user = new User();
+      $user->username = "Ramchandra";
+      $user->save();
 
       // $user->last_name = "Ithape";
 
@@ -53,10 +53,10 @@
       // $user = User::instantiation($found_user);
       // echo $user->username;
 
-      $users = User::find_all();
-      foreach ($users as $user) {
-        echo $user->username . "<br>";
-      }
+      // $users = User::find_all();
+      // foreach ($users as $user) {
+      //   echo $user->username . "<br>";
+      // }
 
       // $found_user = User::find_user_by_id(1);
       // echo $found_user->username;
