@@ -27,9 +27,9 @@
       // $user->save();
 
 
-      $user = new User();
-      $user->username = "Ramchandra";
-      $user->save();
+      // $user = new User();
+      // $user->username = "Ramchandra";
+      // $user->save();
 
       // $user->last_name = "Ithape";
 
@@ -62,6 +62,31 @@
       // echo $found_user->username;
 
       // $photo = new photo();
+
+
+
+      // protected static $db_table_fields = ['photo_id', 'title', 'description', 'filename', 'type', 'size'];
+
+      // public $photo_id;
+      // public $title;
+      // public $description;
+      // public $filename;
+      // public $type;
+      // public $size;
+
+      // $photos = Photo::find_all();
+      // foreach ($photos as $photo) {
+      //   echo $photo->title . "<br>";
+      // }
+
+      // $photo = new Photo();
+      // $photo->title = "nature image";
+      // $photo->description = "asdf asdf ";
+
+      // $photo->size = "20";
+      // $photo->create();
+
+      echo INCLUDES_PATH;
 
       ?>
       <ol class="breadcrumb">

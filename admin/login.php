@@ -1,14 +1,22 @@
 <?php include("includes/header.php");
 
-if ($session->is_signed_in()) {
-  redirect('index.php');
-}
+// if ($session->is_signed_in()) {
+//   redirect('index.php');
+// }
+
+
 // if (!$session->is_signed_in()) {
 //   redirect('login.php');
 // }
 if (isset($_POST['submit'])) {
   $username = trim($_POST['username']);
   $password = trim($_POST['password']);
+
+  // if (!$session->is_signed_in()) {
+  //   redirect('index.php');
+  // }
+
+
   // method to check database user
   $user_found = User::verify_user($username, $password);
   if ($user_found) {

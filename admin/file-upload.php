@@ -6,16 +6,16 @@
 // echo __LINE__ . "<br>";
 // echo __DIR__ . "<br>";
 if (isset($_POST['submit'])) {
-  // echo "<pre>";
-  // print_r($_FILES['file_upload']);
-  // echo "<pre>";
+  echo "<pre>";
+  print_r($_FILES['file_upload']);
+  echo "<pre>";
   $upload_errors = array(
     0 => "There is no error",
     4 => "No file was uploaded"
   );
   $temp_name = $_FILES['file_upload']['tmp_name'];
   $the_file = $_FILES['file_upload']['name'];
-  $directory = "uploads";
+  $directory = "images";
 
   if (move_uploaded_file($temp_name, $directory . "/" . $the_file)) {
     $the_message = "The file uploaded successfully";
