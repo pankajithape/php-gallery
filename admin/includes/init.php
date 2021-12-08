@@ -1,11 +1,13 @@
 <?php
 
 defined('DS') ? NULL : define('DS', DIRECTORY_SEPARATOR);
-// define('SITE_ROOT', 'C:' . DS . 'xampp' . DS . 'htdocs' . DS . 'Gallery');
-// define('SITE_ROOT', 'C:' . DS . 'xampp' . DS . 'htdocs' . DS . 'Gallery');
-define('SITE_ROOT', __DIR__);
-echo SITE_ROOT;
-defined('INCLUDES_PATH') ? NULL : define('INCLUDES_PATH', SITE_ROOT . DS . 'admin' . DS . 'includes');
+define('SITE_ROOT', 'C:' . DS . 'xampp' . DS . 'htdocs' . DS . 'Gallery');
+// define('SITE_ROOT', DS . 'C: ' . DS . 'xampp' . DS . 'htdocs' . DS . 'Gallery');
+// defined('DS') ? null : define('SITE_ROOT ', DS . 'C: ' . DS . 'xampp' . DS . 'htdocs' . DS . 'Gallery');
+// define('SITE_ROOT', __DIR__);
+// echo SITE_ROOT;
+// C:\xampp\htdocs\Gallery\admin
+defined('INCLUDES_PATH') ? null : define('INCLUDES_PATH', SITE_ROOT . DS . 'admin' . DS . 'includes');
 
 
 include("functions.php");

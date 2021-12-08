@@ -2,8 +2,8 @@
 
 class Db_object
 {
-  // protected static $db_table = 'users';
-  // protected static $db_table_fields = ['username', 'password', 'first_name', 'last_name'];
+  protected static $db_table = 'users';
+  protected static $db_table_fields = ['username', 'password', 'first_name', 'last_name'];
 
   public static function find_all()
   {
@@ -11,6 +11,7 @@ class Db_object
   }
   public static function find_by_id($user_id)
   {
+    global $database;
     $the_result_array = static::find_by_query("SELECT * FROM " . static::$db_table . " WHERE id=$user_id LIMIT 1");
     return !empty($the_result_array) ? array_shift($the_result_array) : false;
   }

@@ -34,12 +34,12 @@
       // $user->last_name = "Ithape";
 
       // $user = new User();
-      // $user->username = "Example_username";
-      // $user->password = "Example_password";
-      // $user->first_name = "Example_first_name";
-      // $user->last_name = "Example_last_name";
+      // $user->username = "88username";
+      // $user->password = "88password";
+      // $user->first_name = "88first_name";
+      // $user->last_name = "88last_name";
 
-      // $user->create();
+      // $user->save();
 
 
       // $result_set = User::find_all_users();
@@ -83,10 +83,11 @@
       // $photo->title = "nature image";
       // $photo->description = "asdf asdf ";
 
-      // $photo->size = "20";
+      // $photo->size = "202";
       // $photo->create();
 
-      echo INCLUDES_PATH;
+      echo SITE_ROOT;
+      // echo INCLUDES_PATH;
 
       ?>
       <ol class="breadcrumb">

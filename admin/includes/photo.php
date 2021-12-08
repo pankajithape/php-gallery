@@ -13,8 +13,14 @@ class Photo extends Db_object
   public $upload_directory = "images";
   public $errors = array();
   public $upload_errors_array = array(
-    0 => "There is no error",
-    4 => "No file was uploaded"
+    UPLOAD_ERR_OK           => "There is no error",
+    UPLOAD_ERR_INI_SIZE    => "The uploaded file exceeds the upload_max_filesize directive in php.ini",
+    UPLOAD_ERR_FORM_SIZE    => "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form",
+    UPLOAD_ERR_PARTIAL      => "The uploaded file was only partially uploaded.",
+    UPLOAD_ERR_NO_FILE      => "No file was uploaded.",
+    UPLOAD_ERR_NO_TMP_DIR   => "Missing a temporary folder.",
+    UPLOAD_ERR_CANT_WRITE   => "Failed to write file to disk.",
+    UPLOAD_ERR_EXTENSION    => "A PHP extension stopped the file upload."
   );
   // This is passing $_FILES['uploaded_file] as an argument
   public function set_file($file)
@@ -27,12 +33,18 @@ class Photo extends Db_object
       $this->errors[] = $this->upload_errors_array[$file['error']];
       return false;
     } else {
-      $this->filename =  basename($file['name']) . "<br>";
-      $this->tmp_path = $file['tmp_name'] . "<br>";
-      $this->type = $file['type'] . "<br>";
-      $this->size = $file['size'] . "<br>";
+      $this->filename =  basename($file['name']);
+      $this->tmp_path = $file['tmp_name'];
+      $this->type = $file['type'];
+      $this->size = $file['size'];
     }
   }
+
+  public function picture_path()
+  {
+    return $this->upload_directory . DS . $this->filename;
+  }
+
   public function save()
   {
     if ($this->photo_id) {
@@ -46,29 +58,18 @@ class Photo extends Db_object
         $this->errors[] = "The file was not available";
         return false;
       }
-      $target_path = SITE_ROOT . DS . 'images' . DS . $this->filename;
+      $target_path = SITE_ROOT . DS . 'admin' . DS . 'images' . DS . $this->filename;
       if (file_exists($target_path)) {
-        // echo "<h1>target path is  {$target_path}</h1>";
         $this->errors[] = "File {$this->filename} already exists";
         return false;
       }
-      echo "<h1>temp path is  {$this->tmp_path}</h1>";
-      echo "<h1>target path is  {$target_path}</h1>";
-      $the_file1 = $_FILES['file_upload']['name'];
-      $directory1 = "images";
       if (move_uploaded_file($this->tmp_path, $target_path)) {
-        // if (move_uploaded_file($this->tmp_path,  $directory1 . "/" . $the_file1)) {
-        // $directory . "/" . $the_file ;
-        echo "<h1>temp path is  {$this->tmp_path}</h1>";
-        // temp path is C:\xampp\tmp\php1B0C.tmp
-        echo "<h1>target path is  {$target_path}</h1>";
-        // target path is \Local Disk (C:)\xampp\htdocs\Gallery\admin\images\Capture.png
         if ($this->create()) {
           unset($this->tmp_path);
           return true;
         }
       } else {
-        // $this->errors[] = "The file directory probably does not have permissions";
+        $this->errors[] = "The file directory probably does not have permissions";
         echo false;
       }
     }

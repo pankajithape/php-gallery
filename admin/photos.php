@@ -21,14 +21,45 @@
           Photos
           <small>Subheading</small>
         </h1>
-        <ol class="breadcrumb">
+
+        <div class="col-md-12">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>photo</th>
+                <th>photo id</th>
+                <th>filename</th>
+                <th>title</th>
+                <th>size</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              $photos = Photo::find_all();
+              foreach ($photos as $photo) : ?>
+              <tr>
+                <td><img width="150" src="<?php echo $photo->picture_path(); ?>"> </td>
+                <td><?php echo $photo->photo_id; ?></td>
+                <td><?php echo $photo->filename; ?></td>
+                <td><?php echo $photo->title; ?></td>
+                <td><?php echo $photo->size; ?></td>
+              </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        </div>
+
+
+
+
+        <!-- <ol class="breadcrumb">
           <li>
             <i class="fa fa-dashboard"></i> <a href="index.html">Dashboard</a>
           </li>
           <li class="active">
             <i class="fa fa-file"></i> Blank Page
           </li>
-        </ol>
+        </ol> -->
       </div>
     </div>
     <!-- /.row -->
