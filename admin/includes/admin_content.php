@@ -13,8 +13,8 @@
       // $user = new User();
       // $user->update();
 
-      // $user = User::find_user_by_id(6);
-      // $user->last_name = "Ithape";
+      // $user = User::find_by_id(6);
+      // echo $user->last_name;
       // $user->username = "Example_username1";
       // $user->password = "_password";
       // $user->first_name = "_first     '_name";
@@ -86,7 +86,7 @@
       // $photo->size = "202";
       // $photo->create();
 
-      echo SITE_ROOT;
+      // echo SITE_ROOT;
       // echo INCLUDES_PATH;
 
       ?>

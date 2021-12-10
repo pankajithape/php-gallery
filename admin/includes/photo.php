@@ -2,11 +2,14 @@
 class Photo extends Db_object
 {
   protected static $db_table = 'photos';
-  protected static $db_table_fields = ['photo_id', 'title', 'description', 'filename', 'type', 'size'];
-  public $photo_id;
+  // protected static $db_table_fields = ['id', 'title', 'description', 'filename', 'type', 'size'];
+  protected static $db_table_fields = ['id', 'title', 'description', 'filename', 'type', 'size', 'alternate_text', 'caption'];
+  public $id;
   public $title;
   public $description;
   public $filename;
+  public $alternate_text;
+  public $caption;
   public $type;
   public $size;
   public $tmp_path;
@@ -37,6 +40,8 @@ class Photo extends Db_object
       $this->tmp_path = $file['tmp_name'];
       $this->type = $file['type'];
       $this->size = $file['size'];
+      // $this->alternate_text = $file['alternate_text'];
+      // $this->caption = $file['caption'];
     }
   }
 
@@ -47,7 +52,7 @@ class Photo extends Db_object
 
   public function save()
   {
-    if ($this->photo_id) {
+    if ($this->id) {
       $this->update();
     } else {
       if (!empty($this->errors)) {
@@ -72,6 +77,16 @@ class Photo extends Db_object
         $this->errors[] = "The file directory probably does not have permissions";
         echo false;
       }
+    }
+  }
+
+  public function delete_photo()
+  {
+    if ($this->delete()) {
+      $target_path = SITE_ROOT . DS . 'admin' . DS . $this->picture_path();
+      return unlink($target_path) ? true : false;
+    } else {
+      return false;
     }
   }
 }

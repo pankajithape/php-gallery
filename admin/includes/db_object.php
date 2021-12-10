@@ -5,14 +5,45 @@ class Db_object
   protected static $db_table = 'users';
   protected static $db_table_fields = ['username', 'password', 'first_name', 'last_name'];
 
+  public $errors = array();
+  public $upload_errors_array = array(
+    UPLOAD_ERR_OK           => "There is no error",
+    UPLOAD_ERR_INI_SIZE    => "The uploaded file exceeds the upload_max_filesize directive in php.ini",
+    UPLOAD_ERR_FORM_SIZE    => "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form",
+    UPLOAD_ERR_PARTIAL      => "The uploaded file was only partially uploaded.",
+    UPLOAD_ERR_NO_FILE      => "No file was uploaded.",
+    UPLOAD_ERR_NO_TMP_DIR   => "Missing a temporary folder.",
+    UPLOAD_ERR_CANT_WRITE   => "Failed to write file to disk.",
+    UPLOAD_ERR_EXTENSION    => "A PHP extension stopped the file upload."
+  );
+
+  public function set_file($file)
+  {
+    // echo "hello123";
+    if (empty($file) || !$file || !is_array($file)) {
+      $this->errors[] = "There has no file uploaded here";
+      return false;
+    } elseif ($file['error'] != 0) {
+      $this->errors[] = $this->upload_errors_array[$file['error']];
+      return false;
+    } else {
+      $this->user_image =  basename($file['name']);
+      $this->tmp_path = $file['tmp_name'];
+      $this->type = $file['type'];
+      $this->size = $file['size'];
+      // $this->alternate_text = $file['alternate_text'];
+      // $this->caption = $file['caption'];
+    }
+  }
+
   public static function find_all()
   {
     return static::find_by_query("SELECT * FROM " . static::$db_table . " ");
   }
-  public static function find_by_id($user_id)
+  public static function find_by_id($id)
   {
     global $database;
-    $the_result_array = static::find_by_query("SELECT * FROM " . static::$db_table . " WHERE id=$user_id LIMIT 1");
+    $the_result_array = static::find_by_query("SELECT * FROM " . static::$db_table . " WHERE id=$id LIMIT 1");
     return !empty($the_result_array) ? array_shift($the_result_array) : false;
   }
   public static function find_by_query($sql)
