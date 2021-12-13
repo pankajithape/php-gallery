@@ -2,3 +2,13 @@
   width: 200px;
   height: 200px !important;
 }
+
+.pager .active a {
+  background-color: #000;
+  color: #fff;
+}
+
+.paginate_link123 {
+  background-color: black;
+  color: white;
+}
