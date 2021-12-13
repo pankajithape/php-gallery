@@ -31,6 +31,7 @@
                 <th>filename</th>
                 <th>title</th>
                 <th>size</th>
+                <th>view</th>
               </tr>
             </thead>
             <tbody>
@@ -39,16 +40,23 @@
               foreach ($photos as $photo) : ?>
               <tr>
                 <td><img class="admin-thumbnail-photo" src="<?php echo $photo->picture_path(); ?>">
-                  <div class="pictures_link">
+                  <div class="actions_link">
                     <a href="delete_photo.php?id=<?php echo $photo->id; ?>">Delete</a>
                     <a href="edit_photo.php?id=<?php echo $photo->id; ?>">Edit</a>
-                    <a href="view_photo.php?id=<?php echo $photo->id; ?>">View</a>
+                    <a href="../photo.php?id=<?php echo $photo->id; ?>">View</a>
                   </div>
                 </td>
                 <td><?php echo $photo->id; ?></td>
                 <td><?php echo $photo->filename; ?></td>
                 <td><?php echo $photo->title; ?></td>
                 <td><?php echo $photo->size; ?></td>
+                <td>
+                  <a href="comment_photo.php?id=<?php echo $photo->id; ?>">
+                    <?php
+                      $comments = Comment::find_the_comments($photo->id);
+                      echo count($comments); ?>
+                  </a>
+                </td>
               </tr>
               <?php endforeach; ?>
             </tbody>

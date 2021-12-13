@@ -1,10 +1,10 @@
 <?php include("includes/header.php");
-if (isset($_GET['id'])) {
-  if ($_POST['delete']) {
-    $user = User::find_by_id($_GET['id']);
-    $user->delete();
-  }
-}
+// if (isset($_GET['id'])) {
+//   if ($_POST['delete']) {
+//     $user = User::find_by_id($_GET['id']);
+//     $user->delete();
+//   }
+// }
 ?>
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -39,19 +39,19 @@ if (isset($_GET['id'])) {
                 <?php
                 $users = User::find_all();
                 foreach ($users as $user) : ?>
-                  <tr>
-                    <td><?php echo $user->id; ?></td>
-                    <td><img class="user_image123" src="<?php echo $user->image_path_and_placeholder(); ?>">
-                    </td>
-                    <td><?php echo $user->username; ?>
-                      <div class="action_link">
-                        <a href="delete_User.php?id=<?php echo $user->id; ?>">Delete</a>
-                        <a href="edit_User.php?id=<?php echo $user->id; ?>">Edit</a>
-                      </div>
-                    </td>
-                    <td><?php echo $user->first_name; ?></td>
-                    <td><?php echo $user->last_name; ?></td>
-                  </tr>
+                <tr>
+                  <td><?php echo $user->id; ?></td>
+                  <td><img class="user_image123" src="<?php echo $user->image_path_and_placeholder(); ?>">
+                  </td>
+                  <td><?php echo $user->username; ?>
+                    <div class="action_link">
+                      <a href="delete_User.php?id=<?php echo $user->id; ?>">Delete</a>
+                      <a href="edit_User.php?id=<?php echo $user->id; ?>">Edit</a>
+                    </div>
+                  </td>
+                  <td><?php echo $user->first_name; ?></td>
+                  <td><?php echo $user->last_name; ?></td>
+                </tr>
                 <?php endforeach; ?>
               </tbody>
             </form>

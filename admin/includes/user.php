@@ -78,6 +78,8 @@ class User extends Db_object
       $target_path = SITE_ROOT . DS . 'admin' . DS . 'images' . DS . $this->user_image;
       if (file_exists($target_path)) {
         $this->errors[] = "File {$this->user_image} already exists";
+        // echo $this->errors[];
+        print_r($this->errors);
         return false;
       }
       if (move_uploaded_file($this->tmp_path, $target_path)) {
@@ -102,7 +104,7 @@ class User extends Db_object
     global $database;
     $username = $database->escape_string($username);
     $password = $database->escape_string($password);
-    $sql = "SELECT * FROM  " . self::$db_table . "  WHERE username='$username' AND password='$password' LIMIT 1";
+    $sql = "SELECT * FROM " . self::$db_table . " WHERE username='$username' AND password='$password' LIMIT 1";
     $the_result_array = self::find_by_query($sql);
     return !empty($the_result_array) ? array_shift($the_result_array) : false;
   }

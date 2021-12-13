@@ -7,7 +7,7 @@
 
 $user = new User();
 if (isset($_POST['create'])) {
-  // echo 'hello';
+  echo 'hello';
   if ($user) {
     $user->username = $_POST['username'];
     $user->password = $_POST['password'];
@@ -57,13 +57,10 @@ if (isset($_POST['create'])) {
               <label for="last_name">last name</label>
               <input type="text" class="form-control" name="last_name">
             </div>
-
             <input type="submit" value="submit" name="create" class="btn btn-primary pull-right">
           </div>
-
         </form>
       </div>
-
     </div>
   </div>
   <?php include("includes/footer.php"); ?>

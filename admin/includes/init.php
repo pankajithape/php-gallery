@@ -16,5 +16,6 @@ include("database.php");
 include("db_object.php");
 include("user.php");
 include("photo.php");
+include("comment.php");
 include("session.php");
 // include("login.php");
