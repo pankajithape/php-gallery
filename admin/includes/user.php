@@ -123,4 +123,30 @@ class User extends Db_object
       return false;
     }
   }
+
+  public function ajax_save_user_image($user_image, $user_id)
+  {
+    global $database;
+    $user_image = $database->escape_string($user_image);
+    $user_id = $database->escape_string($user_id);
+
+    $this->user_image = $user_image;
+    $this->id = $user_id;
+
+    $sql = "UPDATE " . self::$db_table . " SET user_image='{$this->user_image}' ";
+    $sql .= " WHERE id={$this->id}";
+    $update_image = $database->query($sql);
+    echo $this->image_path_and_placeholder();
+  }
+
+  public static function display_sidebar_data($photo_id)
+  {
+    $user = User::find_by_id($photo_id);
+
+    $output = "<a class='thumbnail' href='#'><img width='100' src='{$user->picture_path()}'></a> ";
+    $output .= "<p>User Image: {$user->user_image}</p>";
+    $output .= "<p>FirstName: {$user->first_name}</p>";
+    $output .= "<p>LastName: {$user->last_name}</p>";
+    echo $output;
+  }
 }

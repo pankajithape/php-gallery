@@ -1,4 +1,5 @@
 <?php include("includes/header.php");
+include("includes/photo_library_modal.php");
 
 // if (empty($_GET['id'])) {
 //   redirect("photos.php");
@@ -46,6 +47,8 @@ if (empty($_GET['id'])) {
 
 
 ?>
+
+
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
@@ -54,6 +57,10 @@ if (empty($_GET['id'])) {
   <?php include("includes/side_nav.php"); ?>
   <!-- /.navbar-collapse -->
 </nav>
+
+
+
+
 <div id="page-wrapper">
   <div class="container-fluid">
     <!-- Page Heading -->
@@ -63,8 +70,9 @@ if (empty($_GET['id'])) {
           Users
           <small>Subheading</small>
         </h1>
-        <div class="col-md-6">
-          <img class="img-responsive" src="<?php echo $user->image_path_and_placeholder(); ?>">
+        <div class="col-md-6 user_image_box">
+          <a href="#" data-toggle="modal" data-target="#photo-modal"><img class="img-responsive"
+              src="<?php echo $user->image_path_and_placeholder(); ?>"></a>
         </div>
         <form action="" method="post" enctype="multipart/form-data">
           <div class="col-md-6">
@@ -89,7 +97,7 @@ if (empty($_GET['id'])) {
             </div>
 
             <!-- <input type="submit" value="delete" name="delete" class="btn btn-danger "> -->
-            <a class="btn btn-danger" href="delete_User.php?id=<?php echo $user->id; ?>">Delete</a>
+            <a id="user-id" class="btn btn-danger" href="delete_User.php?id=<?php echo $user->id; ?>">Delete</a>
             <input type="submit" value="update" name="update" class="btn btn-primary pull-right">
           </div>
 
