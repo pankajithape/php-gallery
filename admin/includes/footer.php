@@ -9,6 +9,7 @@
   <!-- <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script> -->
 
   <script src="js/summernote.min.js"></script>
+  <script src="js/dropzone.js"></script>
   <script src="js/scripts.js"></script>
   <script type="text/javascript">
 google.charts.load('current', {

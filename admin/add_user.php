@@ -7,14 +7,18 @@
 
 $user = new User();
 if (isset($_POST['create'])) {
-  echo 'hello';
+  // echo 'hello';
   if ($user) {
     $user->username = $_POST['username'];
     $user->password = $_POST['password'];
     $user->first_name = $_POST['first_name'];
     $user->last_name = $_POST['last_name'];
     $user->set_file($_FILES['user_image']);
-    $user->save_user_and_image();
+    // $user->save_user_and_image();
+    $user->upload_photo();
+    $user->save();
+    $session->message("The user {$user->username} has been added");
+    redirect("users.php");
   }
 }
 
@@ -34,8 +38,9 @@ if (isset($_POST['create'])) {
       <div class="col-lg-12">
         <h1 class="page-header">
           Users
-          <small>Subheading</small>
         </h1>
+
+
         <form action="" method="post" enctype="multipart/form-data">
           <div class="col-md-6 col-md-offset-3">
             <div class="form-group">

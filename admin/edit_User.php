@@ -6,45 +6,69 @@ include("includes/photo_library_modal.php");
 // } else {
 //   $photo = Photo::find_by_id($_GET['id']);
 
-$user = User::find_by_id($_GET['id']);
-if (isset($_POST['update'])) {
-  // echo 'hello';
-  if ($user) {
-    $user->username = $_POST['username'];
-    $user->password = $_POST['password'];
-    $user->first_name = $_POST['first_name'];
-    $user->last_name = $_POST['last_name'];
+// $user = User::find_by_id($_GET['id']);
+// if (isset($_POST['update'])) {
+//   // echo 'hello';
+//   if ($user) {
+//     $user->username = $_POST['username'];
+//     $user->password = $_POST['password'];
+//     $user->first_name = $_POST['first_name'];
+//     $user->last_name = $_POST['last_name'];
 
-    if (empty($_FILES['user_image'])) {
-      $user->save();
-    } else {
+//     if (empty($_FILES['user_image'])) {
+//       $user->save();
+//     } else {
 
-      $user->set_file($_FILES['user_image']);
-      $user->upload_photo();
-      $user->save();
-      redirect("edit_User.php?id={$user->id}");
-    }
-  }
-}
+//       $user->set_file($_FILES['user_image']);
+//       $user->upload_photo();
+//       $user->save();
+//       redirect("edit_User.php?id={$user->id}");
+//     }
+//   }
+// }
 
+
+// if (empty($_GET['id'])) {
+//   redirect("users.php");
+// } else {
+//   $user = User::find_by_id($_GET['id']);
+
+//   if (isset($_POST['update'])) {
+//     if ($user) {
+//       $user->username = $_POST['username'];
+//       $user->password = $_POST['password'];
+//       $user->first_name = $_POST['first_name'];
+//       $user->last_name = $_POST['last_name'];
+//       $user->set_file($_FILES['user_image']);
+//       $user->save_user_and_image();
+//     }
+//   }
+// }
 
 if (empty($_GET['id'])) {
   redirect("users.php");
-} else {
-  $user = User::find_by_id($_GET['id']);
-
-  if (isset($_POST['update'])) {
-    if ($user) {
-      $user->username = $_POST['username'];
-      $user->password = $_POST['password'];
-      $user->first_name = $_POST['first_name'];
-      $user->last_name = $_POST['last_name'];
+}
+$user = User::find_by_id($_GET['id']);
+if (isset($_POST['update'])) {
+  if ($user) {
+    $user->username = $_POST['username'];
+    $user->first_name = $_POST['first_name'];
+    $user->last_name = $_POST['last_name'];
+    $user->password = $_POST['password'];
+    if (empty($_FILES['user_image'])) {
+      $user->save();
+      redirect("users.php");
+      $session->message("The user has been updated");
+    } else {
       $user->set_file($_FILES['user_image']);
-      $user->save_user_and_image();
+      $user->upload_photo();
+      $user->save();
+      $session->message("The user has been updated");
+      // redirect("edit_user.php?id={$user->id}");
+      redirect("users.php");
     }
   }
 }
-
 
 ?>
 
@@ -68,7 +92,6 @@ if (empty($_GET['id'])) {
       <div class="col-lg-12">
         <h1 class="page-header">
           Users
-          <small>Subheading</small>
         </h1>
         <div class="col-md-6 user_image_box">
           <a href="#" data-toggle="modal" data-target="#photo-modal"><img class="img-responsive"

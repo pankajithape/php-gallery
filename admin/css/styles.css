@@ -6,6 +6,7 @@
   height: 75px;
   width: 75px;
 }
+
 /* EDIT PHOTO PAGE SIDEBAR STYLE */
 .photo-info-box {
   border: 1px solid #e5e5e5;
@@ -61,4 +62,8 @@
 }
 #modal_sidebar {
   position: fixed !important;
+}
+/********** login form ************/
+#login-id div label {
+  color: #fff;
 }

@@ -42,7 +42,22 @@ $(document).ready(function () {
       },
     });
   });
+
+  /****************** EDIT PHOTO SIDEBAR ************/
+
+  $(".info-box-header").click(function () {
+    // alert("xxxxxxxx");
+    $(".inside").slideToggle("fast");
+    $("#toggle").toggleClass(
+      "glyphicon-menu-down glyphicon , glyphicon-menu-up glyphicon "
+    );
+  });
+
   $("#summernote").summernote({
     height: 300,
   });
+});
+
+$(".delete_link").click(function () {
+  return confirm("are you sure you want to delete this photo?");
 });
